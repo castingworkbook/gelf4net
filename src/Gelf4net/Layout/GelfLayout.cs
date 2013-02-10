@@ -99,7 +99,7 @@ namespace gelf4net.Layout
         private void AddLoggingEventToMessage(LoggingEvent loggingEvent, GelfMessage gelfMessage)
         {
             //If conversion pattern is specified then defer to PatterLayout for building the message body
-            if (!string.IsNullOrWhiteSpace(ConversionPattern))
+            if (!String.IsNullOrEmpty(ConversionPattern) && ConversionPattern.Trim().Length > 0)
             {
                 var message = GetValueFromPattern(loggingEvent, ConversionPattern);
                 gelfMessage.FullMessage = message;
